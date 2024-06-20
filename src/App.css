@@ -1,3 +1,121 @@
+/* Add your CSS styles here */
+
+.add-todo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.add-todo-input {
+  padding: 5px;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.checkbox-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkbox-label {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.add-todo-checkbox {
+  transform: scale(1);
+}
+
+.add-todo-button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.except-button,
+.messenger-button {
+  background-color: yellowgreen;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.popup-input-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-input-label {
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.popup-input {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.popup-textarea {
+  padding: 5px;
+  font-size: 14px;
+  height: 3em;
+  overflow-y: scroll;
+}
+
+.close-popup-button {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
 .app {
   padding: 10px;
 }
@@ -40,11 +158,10 @@
 
 .nav-item.active {
   background-color: #010a14;
-  color: rgb(248, 244, 7)
+  color: rgb(248, 244, 7);
 }
 
 .todos-container {
-  border: 2px solid #007BFF;
   margin: 10px 0;
   padding: 10px;
   display: flex;
@@ -55,10 +172,20 @@
 .todo-item {
   display: flex;
   justify-content: space-between;
-  border: 1px solid #007BFF;
   padding: 10px;
   background-color: #F0F0F0;
   flex-wrap: wrap;
+}
+
+.todo-details {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
 }
 
 .delete-button,
@@ -66,7 +193,6 @@
   background-color: transparent;
   border: none;
   padding: 0;
-  margin-right: 10px;
 }
 
 .delete-button img,
@@ -111,20 +237,19 @@
   font-weight: 400;
 }
 
-.todo-details {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  flex-grow: 1;
+/* Popup for Messenger */
+.large-popup {
+  width: 80%;
+  height: 80%;
 }
 
-.todo-detail {
-  display: flex;
-  align-items: center;
+.large-popup-content {
+  max-height: 100%;
+  overflow-y: auto;
 }
 
-.button-container {
+.large-popup-input-group {
   display: flex;
-  align-items: center;
-  margin-left: auto;
+  flex-direction: column;
+  gap: 10px;
 }

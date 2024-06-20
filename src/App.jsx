@@ -5,11 +5,11 @@ import './App.css'; // Import the CSS file
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [editTodoId, setEditTodoId] = useState(null);
-  const [editedTodo, setEditedTodo] = useState({ Status: "REVISE", Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "" });
+  const [editedTodo, setEditedTodo] = useState({ Status: "REVISE", Departure_Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
   const [activeTab, setActiveTab] = useState('View Revise List');
 
   const handleAddTodo = (todo) => {
-    if (!todo.Status || !todo.Flight || !todo.Return_Flight || !todo.EFF_Date || !todo.End_Date) {
+    if (!todo.Status || !todo.Departure_Flight || !todo.Return_Flight || !todo.EFF_Date || !todo.End_Date) {
       return;
     }
 
@@ -40,12 +40,12 @@ const App = () => {
     });
     setTodos(updatedTodos);
     setEditTodoId(null);
-    setEditedTodo({ Status: "REVISE", Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "" });
+    setEditedTodo({ Status: "REVISE", Departure_Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
   };
 
   const formatDate = (date) => {
     const options = { day: '2-digit', month: 'short' };
-    return new Date(date).toLocaleDateString('en-US', options).replace(/ /g, '-');
+    return new Date(date).toLocaleDateString('en-GB', options).replace(/ /g, ' ');
   };
 
   const renderTabContent = () => {
@@ -69,6 +69,20 @@ const App = () => {
     }
   };
 
+  const renderMessengerLabels = (messenger) => {
+    const labels = [];
+    if (messenger.smsThai) labels.push("SMS Thai");
+    if (messenger.smsEnglish) labels.push("SMS English");
+    if (messenger.smsLocal) labels.push("SMS Local");
+    if (messenger.emailThai) labels.push("Email Thai");
+    if (messenger.emailEnglish) labels.push("Email English");
+    if (messenger.emailLocal) labels.push("Email Local");
+    if (messenger.textVoiceThai) labels.push("Text Voice Thai");
+    if (messenger.textVoiceEnglish) labels.push("Text Voice English");
+    if (messenger.textVoiceLocal) labels.push("Text Voice Local");
+    return labels.join(" / ");
+  };
+
   return (
     <div className="app">
       <nav className="navbar">
@@ -86,16 +100,20 @@ const App = () => {
       <div className="tab-content">
         {renderTabContent()}
       </div>
+      <h3>My Flight Lists</h3>
       <Addtodo handleAddTodos={handleAddTodo} />
       <div className="todos-container">
         {todos.map(todo => (
           <div key={todo.id} className="todo-item">
             <div className="todo-details">
-              <div className="todo-detail"><strong>Status:</strong> {todo.Status}</div>
-              <div className="todo-detail"><strong>Flight:</strong> {todo.Flight}</div>
-              <div className="todo-detail"><strong>Return Flight:</strong> {todo.Return_Flight}</div>
-              <div className="todo-detail"><strong>EFF Date:</strong> {formatDate(todo.EFF_Date)}</div>
-              <div className="todo-detail"><strong>End Date:</strong> {formatDate(todo.End_Date)}</div>
+              <div>{todo.Status}</div>
+              <div>DD: {todo.Departure_Flight}</div>
+              <div>DD: {todo.Return_Flight}</div>
+              <div>{formatDate(todo.EFF_Date)}</div>
+              <div>{formatDate(todo.End_Date)}</div>
+              <div>Freq: {todo.Frequency.join(' / ')}</div>
+              <div>Except: {todo.Except.join(' / ')}</div>
+              <div>{renderMessengerLabels(todo.Messenger)}</div>
             </div>
             <div className="button-container">
               <button onClick={() => handleEditTodo(todo.id, todo)} className="edit-button">
@@ -119,12 +137,12 @@ const App = () => {
                 </select>
                 <input
                   type="text"
-                  value={editedTodo.Flight}
-                  onChange={(e) => setEditedTodo({ ...editedTodo, Flight: e.target.value })}
+                  value={editedTodo.Departure_Flight}
+                  onChange={(e) => setEditedTodo({ ...editedTodo, Departure_Flight: e.target.value })}
                   className="edit-input"
                 />
                 <input
-                  type="number"
+                  type="text"
                   value={editedTodo.Return_Flight}
                   onChange={(e) => setEditedTodo({ ...editedTodo, Return_Flight: e.target.value })}
                   className="edit-input"
@@ -141,6 +159,82 @@ const App = () => {
                   onChange={(e) => setEditedTodo({ ...editedTodo, End_Date: e.target.value })}
                   className="edit-input"
                 />
+                <div className="checkbox-group">
+                  {['1', '2', '3', '4', '5', '6', '7'].map((value, index) => (
+                    <div key={value} className="checkbox-item">
+                      <label className="checkbox-label">{['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'][index]}</label>
+                      <input
+                        type="checkbox"
+                        value={value}
+                        checked={editedTodo.Frequency.includes(value)}
+                        onChange={(e) => setEditedTodo({
+                          ...editedTodo,
+                          Frequency: e.target.checked
+                            ? [...editedTodo.Frequency, value]
+                            : editedTodo.Frequency.filter((day) => day !== value)
+                        })}
+                        className="edit-checkbox"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="input-group">
+                  <button type="button" className="except-button" onClick={() => setEditedTodo({ ...editedTodo, showPopup: !editedTodo.showPopup })}>EXCEPT</button>
+                  {editedTodo.showPopup && (
+                    <div className="popup">
+                      <div className="popup-content">
+                        <h3>Select Except Dates</h3>
+                        <div className="popup-input-group">
+                          {Array.from({ length: 30 }).map((_, index) => (
+                            <div key={index} className="popup-input-item">
+                              <label htmlFor={`except-${index}`} className="popup-input-label">{`Except${index + 1}`}</label>
+                              <input
+                                type="date"
+                                id={`except-${index}`}
+                                value={editedTodo.Except[index] || ''}
+                                onChange={(e) => {
+                                  const newExcept = [...editedTodo.Except];
+                                  newExcept[index] = e.target.value;
+                                  setEditedTodo({ ...editedTodo, Except: newExcept });
+                                }}
+                                className="popup-input"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                        <button type="button" className="close-popup-button" onClick={() => setEditedTodo({ ...editedTodo, showPopup: false })}>Close</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="input-group">
+                  <button type="button" className="messenger-button" onClick={() => setEditedTodo({ ...editedTodo, showMessengerPopup: !editedTodo.showMessengerPopup })}>Messenger</button>
+                  {editedTodo.showMessengerPopup && (
+                    <div className="popup large-popup">
+                      <div className="popup-content large-popup-content">
+                        <h3>Messenger</h3>
+                        <div className="popup-input-group large-popup-input-group">
+                          {['smsThai', 'smsEnglish', 'smsLocal', 'emailThai', 'emailEnglish', 'emailLocal', 'textVoiceThai', 'textVoiceEnglish', 'textVoiceLocal'].map((key, index) => (
+                            <div key={key} className="popup-input-item">
+                              <label htmlFor={`messenger-${key}`} className="popup-input-label">{['SMS Thai', 'SMS English', 'SMS Local', 'Email Thai', 'Email English', 'Email Local', 'Text Voice Thai', 'Text Voice English', 'Text Voice Local'][index]}</label>
+                              <textarea
+                                id={`messenger-${key}`}
+                                rows={15}
+                                value={editedTodo.Messenger[key] || ''}
+                                onChange={(e) => {
+                                  const newMessenger = { ...editedTodo.Messenger, [key]: e.target.value };
+                                  setEditedTodo({ ...editedTodo, Messenger: newMessenger });
+                                }}
+                                className="popup-textarea"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                        <button type="button" className="close-popup-button" onClick={() => setEditedTodo({ ...editedTodo, showMessengerPopup: false })}>Close</button>
+                      </div>
+                    </div>
+                  )}
+                </div>
                 <button onClick={() => handleSaveEditTodo(todo.id)} className="save-button">Save</button>
               </div>
             )}
