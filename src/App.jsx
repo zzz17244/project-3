@@ -5,11 +5,11 @@ import './App.css'; // Import the CSS file
 const App = () => {
   const [todos, setTodos] = useState([]);
   const [editTodoId, setEditTodoId] = useState(null);
-  const [editedTodo, setEditedTodo] = useState({ Status: "REVISE", Departure_Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
+  const [editedTodo, setEditedTodo] = useState({ SSM_PLN: "S24/021", Status: "REVISE", Flight_Pair: "DD104/105", Route: "DMK-CEI v.v.", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
   const [activeTab, setActiveTab] = useState('View Revise List');
 
   const handleAddTodo = (todo) => {
-    if (!todo.Status || !todo.Departure_Flight || !todo.Return_Flight || !todo.EFF_Date || !todo.End_Date) {
+    if (!todo.SSM_PLN || !todo.Status || !todo.Flight_Pair || !todo.Route || !todo.EFF_Date || !todo.End_Date) {
       return;
     }
 
@@ -40,12 +40,12 @@ const App = () => {
     });
     setTodos(updatedTodos);
     setEditTodoId(null);
-    setEditedTodo({ Status: "REVISE", Departure_Flight: "", Return_Flight: "", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
+    setEditedTodo({ SSM_PLN: "S24/021", Status: "REVISE", Flight_Pair: "DD104/105", Route: "DMK-CEI v.v.", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
   };
 
   const formatDate = (date) => {
-    const options = { day: '2-digit', month: 'short' };
-    return new Date(date).toLocaleDateString('en-GB', options).replace(/ /g, ' ');
+    const options = { day: '2-digit', month: 'short', year: '2-digit' };
+    return new Date(date).toLocaleDateString('en-GB', options).replace(/ /g, '-');
   };
 
   const renderTabContent = () => {
@@ -106,13 +106,13 @@ const App = () => {
         {todos.map(todo => (
           <div key={todo.id} className="todo-item">
             <div className="todo-details">
+              <div>{todo.SSM_PLN}</div>
               <div>{todo.Status}</div>
-              <div>DD: {todo.Departure_Flight}</div>
-              <div>DD: {todo.Return_Flight}</div>
-              <div>{formatDate(todo.EFF_Date)}</div>
-              <div>{formatDate(todo.End_Date)}</div>
+              <div>{todo.Flight_Pair}</div>
+              <div>{todo.Route}</div>
+              <div>{formatDate(todo.EFF_Date)} - {formatDate(todo.End_Date)}</div>
               <div>Freq: {todo.Frequency.join(' / ')}</div>
-              <div>Except: {todo.Except.join(' / ')}</div>
+              <div>Except: {todo.Except.map(date => formatDate(date)).join(' / ')}</div>
               <div>{renderMessengerLabels(todo.Messenger)}</div>
             </div>
             <div className="button-container">
@@ -126,6 +126,18 @@ const App = () => {
             {editTodoId === todo.id && (
               <div className="edit-input-container">
                 <select
+                  name="SSM_PLN"
+                  value={editedTodo.SSM_PLN}
+                  onChange={(e) => setEditedTodo({ ...editedTodo, SSM_PLN: e.target.value })}
+                  className="edit-input"
+                >
+                  {Array.from({ length: 380 }, (_, i) => `S24/${String(i + 21).padStart(3, '0')}`).concat(
+                    Array.from({ length: 400 }, (_, i) => `W24/${String(i + 1).padStart(3, '0')}`)
+                  ).map(option => (
+                    <option key={option} value={option}>{option}</option>
+                  ))}
+                </select>
+                <select
                   name="Status"
                   value={editedTodo.Status}
                   onChange={(e) => setEditedTodo({ ...editedTodo, Status: e.target.value })}
@@ -135,18 +147,35 @@ const App = () => {
                   <option value="ORIGINAL">ORIGINAL</option>
                   <option value="CANCELLED">CANCELLED</option>
                 </select>
-                <input
-                  type="text"
-                  value={editedTodo.Departure_Flight}
-                  onChange={(e) => setEditedTodo({ ...editedTodo, Departure_Flight: e.target.value })}
+                <select
+                  name="Flight_Pair"
+                  value={editedTodo.Flight_Pair}
+                  onChange={(e) => setEditedTodo({ ...editedTodo, Flight_Pair: e.target.value })}
                   className="edit-input"
-                />
-                <input
-                  type="text"
-                  value={editedTodo.Return_Flight}
-                  onChange={(e) => setEditedTodo({ ...editedTodo, Return_Flight: e.target.value })}
+                >
+                  <option value="DD104/105">DD104/105</option>
+                  <option value="DD126/127">DD126/127</option>
+                  <option value="DD/142143">DD/142143</option>
+                  <option value="DD324/325">DD324/325</option>
+                  <option value="DD500/501">DD500/501</option>
+                  <option value="DD524/525">DD524/525</option>
+                  <option value="DD528/529">DD528/529</option>
+                  <option value="DD570/571">DD570/571</option>
+                  <option value="DD576/577">DD576/577</option>
+                </select>
+                <select
+                  name="Route"
+                  value={editedTodo.Route}
+                  onChange={(e) => setEditedTodo({ ...editedTodo, Route: e.target.value })}
                   className="edit-input"
-                />
+                >
+                  <option value="DMK-CEI v.v.">DMK-CEI v.v.</option>
+                  <option value="DMK-CNX v.v.">DMK-CNX v.v.</option>
+                  <option value="DMK-UBP v.v.">DMK-UBP v.v.</option>
+                  <option value="DMK-HYD v.v.">DMK-HYD v.v.</option>
+                  <option value="DMK-HKT v.v.">DMK-HKT v.v.</option>
+                  <option value="DMK-URT v.v.">DMK-URT v.v.</option>
+                </select>
                 <input
                   type="date"
                   value={editedTodo.EFF_Date}
