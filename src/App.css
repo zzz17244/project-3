@@ -50,8 +50,7 @@
   font-size: 16px;
 }
 
-.except-button
-{
+.except-button {
   background-color: rgba(31, 195, 245, 0.966);
   color: white;
   padding: 5px;
@@ -59,6 +58,7 @@
   border: none;
   cursor: pointer;
   border-radius: 12%;
+  height: 120%; /* Increased height by 20% */
 }
 
 .messenger-button {
@@ -69,6 +69,7 @@
   border-radius: 12%;
   border: none;
   cursor: pointer;
+  height: 120%; /* Increased height by 20% */
 }
 
 .popup {
@@ -136,22 +137,29 @@
   color: black;
   padding: 5px 10px; /* Reduced height */
   text-align: left;
-  height: 65px;
+  height: 72px; /* Reduced height by 20% */
   margin-bottom: 0px; /* Space between header and navbar */
   display: flex;
   align-items: center;
 }
 
 .header-logo {
-  height: 130%; /* Scale down to 20% of original size */
-  margin-right: 10px;
-  margin-top: 10px;
+  height: 100%; /* Scale down to 20% of original size */
+  margin-right: 5px;
+  margin-top: 5px;
 }
 
+.title {
+  background-color: #fcce01; /* Updated background color to match header */
+  color: black;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
 
 .navbar {
-  background:#f8cc09;
-  padding: 10px 20px;
+  background: #f8cc09;
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margin */
 }
 
 .navbar-title {
@@ -235,6 +243,7 @@
   flex-grow: 1;
   align-items: center;
   gap: 10px;
+  margin-top: 10px; /* Added more space below input lines */
 }
 
 .edit-input {

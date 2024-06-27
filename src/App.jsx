@@ -86,9 +86,9 @@ const App = () => {
   return (
     <div className="app">
       <header className="header">
-  <img src="https://local2826.wordpress.com/wp-content/uploads/2016/09/nokair-logo.png" alt="NokAir Logo" className="header-logo" />
-  <h2>SSM Irregularity Flight Handling</h2>
-</header>
+        <img src="https://local2826.wordpress.com/wp-content/uploads/2016/09/nokair-logo.png" alt="NokAir Logo" className="header-logo" />
+      </header>
+      <h2 className="title">SSM Irregularity Flight Handling</h2>
 
       <nav className="navbar">
         <ul className="navbar-menu">
