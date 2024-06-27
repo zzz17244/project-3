@@ -85,8 +85,12 @@ const App = () => {
 
   return (
     <div className="app">
+      <header className="header">
+  <img src="https://local2826.wordpress.com/wp-content/uploads/2016/09/nokair-logo.png" alt="NokAir Logo" className="header-logo" />
+  <h2>SSM Irregularity Flight Handling</h2>
+</header>
+
       <nav className="navbar">
-        <div className="navbar-title">ASM Irregularity Flight Handling</div>
         <ul className="navbar-menu">
           <li className={`nav-item ${activeTab === 'View Revise List' ? 'active' : ''}`} onClick={() => setActiveTab('View Revise List')}>View Revise List</li>
           <li className={`nav-item ${activeTab === 'View 72 Hours Final' ? 'active' : ''}`} onClick={() => setActiveTab('View 72 Hours Final')}>View 72 Hours Final</li>
@@ -100,7 +104,6 @@ const App = () => {
       <div className="tab-content">
         {renderTabContent()}
       </div>
-      <h3>My Flight Lists</h3>
       <Addtodo handleAddTodos={handleAddTodo} />
       <div className="todos-container">
         {todos.map(todo => (

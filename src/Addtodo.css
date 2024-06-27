@@ -18,13 +18,16 @@
 
 .add-todo-button {
   padding: 10px;
-  background-color: #007bff;
+  background-color: #8fda05;
   color: white;
   border: none;
   cursor: pointer;
-  height: fit-content; /* Ensure the button height fits the content */
+  height: 20%; /* Ensure the button height fits the content */
+  width:  60pt;
+  border-radius: 10%;
 }
 
 .add-todo-button:hover {
-  background-color: #0056b3;
+  background-color: #57b300;
+  color: white;
 }

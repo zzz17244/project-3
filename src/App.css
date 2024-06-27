@@ -50,12 +50,23 @@
   font-size: 16px;
 }
 
-.except-button,
-.messenger-button {
-  background-color: yellowgreen;
+.except-button
+{
+  background-color: rgba(31, 195, 245, 0.966);
   color: white;
   padding: 5px;
   font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12%;
+}
+
+.messenger-button {
+  background-color: rgba(21, 129, 201, 0.63);
+  color: white;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 12%;
   border: none;
   cursor: pointer;
 }
@@ -107,7 +118,7 @@
 }
 
 .close-popup-button {
-  background-color: red;
+  background-color: rgb(164, 245, 14);
   color: white;
   padding: 5px;
   font-size: 14px;
@@ -120,8 +131,26 @@
   padding: 10px;
 }
 
+.header {
+  background-color: #fcce01; /* Updated header color */
+  color: black;
+  padding: 5px 10px; /* Reduced height */
+  text-align: left;
+  height: 65px;
+  margin-bottom: 0px; /* Space between header and navbar */
+  display: flex;
+  align-items: center;
+}
+
+.header-logo {
+  height: 130%; /* Scale down to 20% of original size */
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+
 .navbar {
-  background: #FBE103;
+  background:#f8cc09;
   padding: 10px 20px;
 }
 
@@ -144,7 +173,7 @@
 .nav-item {
   margin: 5px 10px;
   padding: 10px;
-  background-color: #f6fa09;
+  background-color: #f7e708;
   border: 1px solid hsl(56, 91%, 50%);
   border-radius: 4px;
   cursor: pointer;
