@@ -53,10 +53,10 @@ const App = () => {
     switch (activeTab) {
       case 'View Revise List':
         return <div className="tab-content-text">View Revise List</div>;
-      case 'View 72 Hours Final':
-        return <div className="tab-content-text">View 72 Hours Final</div>;
-      case 'View All Final Flight':
-        return <div className="tab-content-text">View All Final Flight</div>;
+      case 'View 3 Days List':
+        return <div className="tab-content-text">View 3 Days List</div>;
+      case 'View Final List':
+        return <div className="tab-content-text">View Final List</div>;
       case 'View Action List':
         return <div className="tab-content-text">View Action List</div>;
       case 'View Call Out List':
@@ -109,13 +109,13 @@ const App = () => {
       <header className="header">
         <img src="https://local2826.wordpress.com/wp-content/uploads/2016/09/nokair-logo.png" alt="NokAir Logo" className="header-logo" />
       </header>
-      <h2 className="title">&nbsp;&nbsp;&nbsp;&nbsp;SSM Irregularity Flight Handling</h2>
+      <h2 className="title">&nbsp;&nbsp;&nbsp;&nbsp;SSM  Flight Irregularity</h2>
 
       <nav className="navbar">
         <ul className="navbar-menu">
           <li className={`nav-item ${activeTab === 'View Revise List' ? 'active' : ''}`} onClick={() => setActiveTab('View Revise List')}>View Revise List</li>
-          <li className={`nav-item ${activeTab === 'View 72 Hours Final' ? 'active' : ''}`} onClick={() => setActiveTab('View 72 Hours Final')}>View 72 Hours Final</li>
-          <li className={`nav-item ${activeTab === 'View All Final Flight' ? 'active' : ''}`} onClick={() => setActiveTab('View All Final Flight')}>View All Final Flight</li>
+          <li className={`nav-item ${activeTab === 'View 3 Days List' ? 'active' : ''}`} onClick={() => setActiveTab('View 3 Days List')}>View 3 Days List</li>
+          <li className={`nav-item ${activeTab === 'View Final List' ? 'active' : ''}`} onClick={() => setActiveTab('View Final List')}>View Final List</li>
           <li className={`nav-item ${activeTab === 'View Action List' ? 'active' : ''}`} onClick={() => setActiveTab('View Action List')}>View Action List</li>
           <li className={`nav-item ${activeTab === 'View Call Out List' ? 'active' : ''}`} onClick={() => setActiveTab('View Call Out List')}>View Call Out List</li>
           <li className={`nav-item ${activeTab === 'View & Manage PNR' ? 'active' : ''}`} onClick={() => setActiveTab('View & Manage PNR')}>View & Manage PNR</li>

@@ -28,7 +28,6 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  
 }
 
 .checkbox-item {
@@ -58,33 +57,30 @@
   border: none;
   cursor: pointer;
   height: 20%; /* Ensure the button height fits the content */
-  width:  60pt;
+  width: 60pt;
   border-radius: 10%;
 }
 
-.except-button:hover{
+.except-button:hover {
   background-color: rgb(114, 227, 235);
   color: rgb(4, 4, 37);
 }
 
-
 .messenger-button {
   padding: 10px;
-  background-color:rgb(114, 170, 235);
+  background-color: rgb(114, 170, 235);
   color: white;
   border: none;
   cursor: pointer;
   height: 20%; /* Ensure the button height fits the content */
-  width:  60pt;
+  width: 60pt;
   border-radius: 10%;
 }
 
-.messenger-button:hover{
+.messenger-button:hover {
   background-color: rgb(114, 227, 235);
   color: black;
 }
-
-
 
 .popup {
   position: fixed;
@@ -105,20 +101,17 @@
   background-color: skyblue;
   border-color: gray;
   color: rgb(9, 9, 34);
-  
 }
 
 .popup-input-group {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-
 }
 
 .popup-input-item {
   display: flex;
   flex-direction: column;
-  
 }
 
 .popup-input-label {
@@ -165,7 +158,6 @@
   box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
 
-
 .header-logo {
   height: 121%; /* Scale down to 20% of original size */
   margin-right: 5px;
@@ -175,8 +167,9 @@
 .title {
   background-color: #fcce01; /* Updated background color to match header */
   color: black;
-  padding: 0; /* Remove padding */
+  padding: 5px; /* Remove padding */
   margin: 0; /* Remove margin */
+ 
 }
 
 .navbar {
@@ -203,12 +196,15 @@
 
 .nav-item {
   margin: 5px 10px;
-  padding: 10px;
-  background-color: #f7e708;
+  padding: 5px;
+  background-color: #f8e80be8;
   border: 1px solid hsl(56, 91%, 50%);
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-weight: bold;
+  width: 150px; /* Set a fixed width */
+  text-align: center; /* Center align text */
 }
 
 .nav-item:hover {
@@ -218,7 +214,15 @@
 
 .nav-item.active {
   background-color: rgb(197, 250, 4);
-  color: black);
+  color: black;
+}
+
+/* Make nav-item responsive */
+@media (max-width: 768px) {
+  .nav-item {
+    width: auto; /* Allow nav-item to adjust its width on smaller screens */
+    flex: 1 1 auto; /* Allow items to grow and shrink as needed */
+  }
 }
 
 .todos-container {
@@ -245,7 +249,6 @@
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
-  
 }
 
 .button-container {
@@ -299,7 +302,6 @@
   transform: translateY(-16%);
 }
 
-
 .tab-content-text {
   font-size: 20px; /* Adjust the font size here */
   font-weight: 400;
@@ -319,7 +321,6 @@
   font-size: xx-large;
   font-weight: 200;
   color: white;
-
 }
 
 .large-popup-input-group {
@@ -333,45 +334,30 @@
   font-size: xx-large;
   font-weight: 1000;
 }
+
 .admin-dropdown {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
-  border: 1px solid #ccc;
+  border: 1px solid #2b98f1;
   border-radius: 4px;
-}
-
-.tab-content-text {
-  margin-top: 10px;
-  background-color: skyblue;
-  font-size: 16px;
-}
-.admin-dropdown {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.tab-content-text {
-  margin-top: 20px;
-  font-size: 16px;
+  background-color: rgb(44, 179, 233);
+  font-size: large;
+  color: whitesmoke;
 }
 
 .admin-content {
-  margin-top: 20px;
+  margin-top: 10px; 
+  background-color: skyblue;
 }
 
 .close-button {
   display: inline-block;
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #f44336;
+  background-color: #96e404;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
-
