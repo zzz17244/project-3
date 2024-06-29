@@ -88,7 +88,9 @@ const App = () => {
       <header className="header">
         <img src="https://local2826.wordpress.com/wp-content/uploads/2016/09/nokair-logo.png" alt="NokAir Logo" className="header-logo" />
       </header>
-      <h2 className="title">SSM Irregularity Flight Handling</h2>
+      <h2 className="title">&nbsp;&nbsp;&nbsp;&nbsp;SSM Irregularity Flight Handling</h2>
+
+
 
       <nav className="navbar">
         <ul className="navbar-menu">
@@ -101,9 +103,11 @@ const App = () => {
           <li className={`nav-item ${activeTab === 'Update Text |Chat Bot| Voice| Call' ? 'active' : ''}`} onClick={() => setActiveTab('Update Text |Chat Bot| Voice| Call')}>Update Text |Chat Bot| Voice| Call</li>
         </ul>
       </nav>
+
       <div className="tab-content">
         {renderTabContent()}
       </div>
+
       <Addtodo handleAddTodos={handleAddTodo} />
       <div className="todos-container">
         {todos.map(todo => (
@@ -211,7 +215,7 @@ const App = () => {
                   ))}
                 </div>
                 <div className="input-group">
-                  <button type="button" className="except-button" onClick={() => setEditedTodo({ ...editedTodo, showPopup: !editedTodo.showPopup })}>EXCEPT</button>
+                  <button type="button" className="except-button" onClick={() => setEditedTodo({ ...editedTodo, showPopup: !editedTodo.showPopup })}>Except</button>
                   {editedTodo.showPopup && (
                     <div className="popup">
                       <div className="popup-content">

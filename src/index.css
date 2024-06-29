@@ -1,0 +1,13 @@
+/* For a specific class, e.g., .black-background-gray-text */
+.black-background-gray-text {
+    background-color: black;
+    color: gray;
+  }
+  
+  /* If you want to apply this to the body of the entire page */
+  body {
+    background-color: rgb(215, 234, 235);
+    color: black;
+  }
+  
+  

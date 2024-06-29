@@ -28,6 +28,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
+  
 }
 
 .checkbox-item {
@@ -51,26 +52,39 @@
 }
 
 .except-button {
-  background-color: rgba(31, 195, 245, 0.966);
+  padding: 10px;
+  background-color: rgb(114, 170, 235);
   color: white;
-  padding: 5px;
-  font-size: 14px;
   border: none;
   cursor: pointer;
-  border-radius: 12%;
-  height: 120%; /* Increased height by 20% */
+  height: 20%; /* Ensure the button height fits the content */
+  width:  60pt;
+  border-radius: 10%;
 }
 
+.except-button:hover{
+  background-color: rgb(114, 227, 235);
+  color: rgb(4, 4, 37);
+}
+
+
 .messenger-button {
-  background-color: rgba(21, 129, 201, 0.63);
+  padding: 10px;
+  background-color:rgb(114, 170, 235);
   color: white;
-  padding: 5px;
-  font-size: 16px;
-  border-radius: 12%;
   border: none;
   cursor: pointer;
-  height: 120%; /* Increased height by 20% */
+  height: 20%; /* Ensure the button height fits the content */
+  width:  60pt;
+  border-radius: 10%;
 }
+
+.messenger-button:hover{
+  background-color: rgb(114, 227, 235);
+  color: black;
+}
+
+
 
 .popup {
   position: fixed;
@@ -88,17 +102,23 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: skyblue;
+  border-color: gray;
+  color: rgb(9, 9, 34);
+  
 }
 
 .popup-input-group {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
 }
 
 .popup-input-item {
   display: flex;
   flex-direction: column;
+  
 }
 
 .popup-input-label {
@@ -119,7 +139,7 @@
 }
 
 .close-popup-button {
-  background-color: rgb(164, 245, 14);
+  background-color: rgb(21, 212, 21);
   color: white;
   padding: 5px;
   font-size: 14px;
@@ -137,14 +157,17 @@
   color: black;
   padding: 5px 10px; /* Reduced height */
   text-align: left;
-  height: 72px; /* Reduced height by 20% */
+  height: 85px; /* Reduced height by 20% */
   margin-bottom: 0px; /* Space between header and navbar */
   display: flex;
   align-items: center;
+  width: 100%; /* Full width of the screen */
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
 
+
 .header-logo {
-  height: 100%; /* Scale down to 20% of original size */
+  height: 121%; /* Scale down to 20% of original size */
   margin-right: 5px;
   margin-top: 5px;
 }
@@ -194,16 +217,17 @@
 }
 
 .nav-item.active {
-  background-color: #010a14;
-  color: rgb(248, 244, 7);
+  background-color: rgb(197, 250, 4);
+  color: black);
 }
 
 .todos-container {
   margin: 10px 0;
+  margin-top: 20px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 
 .todo-item {
@@ -266,9 +290,11 @@
   padding: 5px;
   border: 1px solid #eeff00;
   border-radius: 4px;
-  background-color: hsla(60, 74%, 5%, 0.979);
-  color: #d4f70a;
+  background-color: skyblue;
+  color: black;
+  transform: translateY(-16%);
 }
+
 
 .tab-content-text {
   font-size: 20px; /* Adjust the font size here */
@@ -279,15 +305,21 @@
 .large-popup {
   width: 80%;
   height: 80%;
+  background-color: skyblue;
 }
 
 .large-popup-content {
   max-height: 100%;
   overflow-y: auto;
+  background-color: skyblue;
 }
 
 .large-popup-input-group {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background-color: skyblue;
+  color: blue;
+  border-color: gray;
+  border: 5%;
 }
