@@ -37,3 +37,60 @@
   background-color: #b7f806;
   color: black;
 }
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-width: 90%;
+  max-height: 90%; /* Ensure the popup doesn't exceed 90% of the viewport height */
+  overflow: auto; /* Add scroll functionality */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.popup-content {
+  max-height: calc(100vh - 100px); /* Ensure the content doesn't exceed the viewport height minus some margin */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.large-popup {
+  max-width: 90%;
+}
+
+.large-popup-content {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.popup-input-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popup-input-item {
+  flex: 1 1 100%; /* Make each input item take full width */
+  margin-bottom: 10px;
+}
+
+.close-popup-button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .popup-content,
+  .large-popup-content {
+    max-height: 80vh; /* Adjust max height for smaller devices */
+  }
+}

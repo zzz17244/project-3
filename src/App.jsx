@@ -113,7 +113,7 @@ const App = () => {
         {todos.map(todo => (
           <div key={todo.id} className="todo-item">
             <div className="todo-details">
-              <div>{todo.SSM_PLN}</div>
+              <div>{todo.SSM_PLN}</div> 
               <div>{todo.Status}</div>
               <div>{todo.Flight_Pair}</div>
               <div>{todo.Route}</div>

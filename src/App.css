@@ -222,26 +222,30 @@
 }
 
 .todos-container {
-  margin: 10px 0;
-  margin-top: 20px;
+  margin: 5px 0;
+  margin-top: 10px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2px;
 }
 
 .todo-item {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: #F0F0F0;
   flex-wrap: wrap;
+  background-color: rgb(13, 14, 1);
+  color: rgb(150, 181, 194);
+  width: auto;
+  border-radius: 5pt;
 }
 
 .todo-details {
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
+  
 }
 
 .button-container {
@@ -288,10 +292,10 @@
 .tab-content {
   margin-top: 5px;
   padding: 5px;
-  border: 1px solid #eeff00;
+  border: 1px solid #88c1d8;
   border-radius: 4px;
-  background-color: skyblue;
-  color: black;
+  background-color: rgb(133, 208, 238);
+  color: white;
   transform: translateY(-16%);
 }
 
@@ -312,6 +316,10 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: skyblue;
+  font-size: xx-large;
+  font-weight: 200;
+  color: white;
+
 }
 
 .large-popup-input-group {
@@ -322,4 +330,6 @@
   color: blue;
   border-color: gray;
   border: 5%;
+  font-size: xx-large;
+  font-weight: 1000;
 }
