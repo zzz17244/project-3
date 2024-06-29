@@ -7,6 +7,7 @@ const App = () => {
   const [editTodoId, setEditTodoId] = useState(null);
   const [editedTodo, setEditedTodo] = useState({ SSM_PLN: "S24/021", Status: "REVISE", Flight_Pair: "DD104/105", Route: "DMK-CEI v.v.", EFF_Date: "", End_Date: "", Frequency: [], Except: [], Messenger: {} });
   const [activeTab, setActiveTab] = useState('View Revise List');
+  const [adminSubMenu, setAdminSubMenu] = useState('');
 
   const handleAddTodo = (todo) => {
     if (!todo.SSM_PLN || !todo.Status || !todo.Flight_Pair || !todo.Route || !todo.EFF_Date || !todo.End_Date) {
@@ -62,8 +63,28 @@ const App = () => {
         return <div className="tab-content-text">View Call Out List</div>;
       case 'View & Manage PNR':
         return <div className="tab-content-text">View & Manage PNR</div>;
-      case 'Update Text |Chat Bot| Voice| Call':
-        return <div className="tab-content-text">Update Text |Chat Bot| Voice| Call</div>;
+      case 'Admin Functions':
+        return (
+          <div className="tab-content-text">
+            <select
+              value={adminSubMenu}
+              onChange={(e) => setAdminSubMenu(e.target.value)}
+              className="admin-dropdown"
+            >
+              <option value="">Select Admin Function</option>
+              <option value="Update SMS">Update SMS</option>
+              <option value="Update Email">Update Email</option>
+              <option value="Update Voice Text">Update Voice Text</option>
+              <option value="Update Users">Update Users</option>
+            </select>
+            {adminSubMenu && (
+              <div className="admin-content">
+                <div>{adminSubMenu}</div>
+                <button className="close-button" onClick={() => setAdminSubMenu('')}>Close</button>
+              </div>
+            )}
+          </div>
+        );
       default:
         return null;
     }
@@ -90,8 +111,6 @@ const App = () => {
       </header>
       <h2 className="title">&nbsp;&nbsp;&nbsp;&nbsp;SSM Irregularity Flight Handling</h2>
 
-
-
       <nav className="navbar">
         <ul className="navbar-menu">
           <li className={`nav-item ${activeTab === 'View Revise List' ? 'active' : ''}`} onClick={() => setActiveTab('View Revise List')}>View Revise List</li>
@@ -100,7 +119,7 @@ const App = () => {
           <li className={`nav-item ${activeTab === 'View Action List' ? 'active' : ''}`} onClick={() => setActiveTab('View Action List')}>View Action List</li>
           <li className={`nav-item ${activeTab === 'View Call Out List' ? 'active' : ''}`} onClick={() => setActiveTab('View Call Out List')}>View Call Out List</li>
           <li className={`nav-item ${activeTab === 'View & Manage PNR' ? 'active' : ''}`} onClick={() => setActiveTab('View & Manage PNR')}>View & Manage PNR</li>
-          <li className={`nav-item ${activeTab === 'Update Text |Chat Bot| Voice| Call' ? 'active' : ''}`} onClick={() => setActiveTab('Update Text |Chat Bot| Voice| Call')}>Update Text |Chat Bot| Voice| Call</li>
+          <li className={`nav-item ${activeTab === 'Admin Functions' ? 'active' : ''}`} onClick={() => setActiveTab('Admin Functions')}>Admin Functions</li>
         </ul>
       </nav>
 
